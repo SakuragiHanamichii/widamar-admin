@@ -1,0 +1,59 @@
+    <style>
+        .tabs {
+            display: flex;
+            margin: 30px;
+            gap: 27px;
+            border-bottom: solid 1px #111111;
+        }
+        .tab-button {
+            height: 48px;
+            width: 104px;
+            border-radius: 15px;
+            font-size: 24px;
+            color: white;
+            background-color: gray;
+            cursor: pointer;
+            margin: 30px;
+        }
+        .tab-button.active {
+            background-color: #0000ff;
+        }
+        .isi-admin {
+            padding: 20px;
+            justify-items: center;
+        }
+    </style>
+    <div class="tabs">
+        <button class="tab-button active" onclick="setActiveTab(this); loadContentadmin('history.html')">Riwayat</button>
+        <button class="tab-button" onclick="setActiveTab(this); loadContentadmin('refund.html')">Refund</button>
+    </div>
+    <div class="isi-admin" id="isi-admin">
+
+    </div>
+
+    <script>
+        function loadContentadmin(page) {
+            console.log('Loading:', page);
+            fetch(page)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load: ' + response.statusText);
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('isi-admin').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading content:', error);
+                    document.getElementById('isi-admin').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                });
+        }
+
+        function setActiveTab(button) {
+            document.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active'));
+            button.classList.add('active');
+        }
+
+        window.onload = () => loadContentadmin('history.html');
+    </script>
+</body>
+</html>

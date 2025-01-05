@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h1>WIDAMAR</h1>
+        <ul>
+            <li onclick="loadContent('dashboard.html')"><img src="Category.png" alt="Dashboard Icon">Dashboard</li>
+            <li onclick="loadContent('admin.html')"><img src="profileicon.png" alt="Users Icon">Admin</li>
+            <li><a href="booking.html"><img src="ticketstar.png" alt="Tickets Icon">Tickets</a></li>
+        </ul>
+        <a href="/home/landingpage.html">
+            <button class="logout">Logout</button>
+        </a>
+    </div>
+    
+    <div class="content">
+        <div class="navbar">
+            <span>Welcome! Admin</span>
+            <div class="profile">
+                <img src="profile.png" alt="User Profile">
+                <h4>Admin</h4>
+            </div>
+        </div>
+        <div class="content-box" id="content-box">
+
+        </div>
+    </div>
+   
+html
+Copy code
+<script>
+    function loadContent(page) {
+        console.log('Loading:', page);
+        fetch(page)
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load: ' + response.statusText);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('content-box').innerHTML = data;
+                // Call initialization if loading dynamic tabs
+                if (page === 'admin.html') {
+                    initializeTabs();
+                }
+            })
+            .catch(error => console.error('Error loading content:', error));
+    }
+
+    function setActiveTab(button) {
+        document.querySelectorAll('.tab-button').forEach(tab => tab.classList.remove('active'));
+        button.classList.add('active');
+    }
+
+    function loadContentadmin(page) {
+        console.log('Loading admin page:', page);
+        fetch(page)
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load: ' + response.statusText);
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('isi-admin').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error loading admin content:', error);
+                document.getElementById('isi-admin').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            });
+    }
+
+    function initializeTabs() {
+        // Default to loading the first tab
+        loadContentadmin('history.html');
+    }
+
+    // Load default content
+    window.onload = () => loadContent('admin.html');
+</script>
+</body>
+</html>

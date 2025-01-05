@@ -1,0 +1,126 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #C4C4C4;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 240px;
+    background-color: #0000ff;
+    height: 100%;
+    position: fixed;
+    color: #fff;
+    padding: 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h1 {
+    margin-left: 40px;
+    font-size: 24px;
+    align-items: center;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 30px;
+    justify-content: center;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara ikon dan teks */
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 20px 0px 0px;
+ }
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sidebar ul li a img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -30px;
+    width: 1700px;
+    height: 99px;
+    background-color: #ffffff;
+}
+
+.navbar .profile {
+    display: flex;
+    align-items: center;
+    margin-right: 250px;
+    padding: 0;
+    background-color: #C4C4C4;
+    border-radius: 20px;
+    width: 140px;
+}
+
+.navbar span{
+    margin-left: 120px;
+}
+
+.navbar img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+/* Content and Card Styles */
+.content {
+    margin-left: 250px;
+    padding: 30px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.content-box{
+    width: 130vh;
+    justify-self: center;
+    height: 75vh;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.logout{
+    display: flex;
+    flex-direction: column;
+    align-self:auto;
+    margin-top: 500px;
+    width: 176px;
+    height: 44px;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+    align-self: center;
+    align-items: center;
+}
+
+
